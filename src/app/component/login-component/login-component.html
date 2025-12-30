@@ -1,0 +1,39 @@
+<div class="login-container">
+  <h2>Connexion Gamer History</h2>
+
+  <form [formGroup]="loginForm" (submit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="exemple@helha.be"
+      >
+
+      @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+        <div class="error">
+          Email valide requis
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+      >
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert-error">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+  </form>
+</div>
