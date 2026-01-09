@@ -1,1 +1,26 @@
-<p>home-component works!</p>
+<div class="dashboard-container">
+  <header>
+    <h1>Gamer History</h1>
+    <p>Bienvenue dans votre gestionnaire d'historique de jeux.</p>
+  </header>
+
+  <div class="menu-grid">
+    <div class="card" [routerLink]="['/create-game']">
+      <div class="icon">🎮</div>
+      <h3>Nouveau Jeu</h3>
+      <p>Ajouter un jeu à la base de données.</p>
+    </div>
+
+    <div class="card disabled">
+      <div class="icon">📜</div>
+      <h3>Mon Historique</h3>
+      <p>Consulter mes sessions de jeu (Bientôt).</p>
+    </div>
+
+    <div class="card logout-card" (click)="logout()">
+      <div class="icon">🚪</div>
+      <h3>Déconnexion</h3>
+      <p>Se déconnecter de l'application.</p>
+    </div>
+  </div>
+</div>

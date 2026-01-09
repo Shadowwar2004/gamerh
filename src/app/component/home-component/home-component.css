@@ -1,0 +1,82 @@
+/* Layout global */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #a080ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Grille de cartes */
+.menu-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+}
+
+/* Style des cartes */
+.card {
+  background-color: #2c2c2c;
+  width: 250px;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: #383838;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin: 10px 0;
+  color: #fff;
+}
+
+p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* Carte spécifique Déconnexion */
+.logout-card:hover {
+  background-color: #4a1818; /* Rouge foncé au survol */
+}
+
+/* Carte désactivée (pour les features pas encore prêtes) */
+.card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.card.disabled:hover {
+  transform: none;
+  background-color: #2c2c2c;
+}
