@@ -11,16 +11,28 @@
       <p>Ajouter un jeu à la base de données.</p>
     </div>
 
-    <div class="card disabled">
+    <div class="card" [routerLink]="['/games']">
+      <div class="icon">📚</div>
+      <h3>Bibliothèque</h3>
+      <p>Consulter les jeux par support.</p>
+    </div>
+
+    <div class="card" [routerLink]="['/add-session']">
+      <div class="icon">⏱️</div>
+      <h3>Nouvelle Session</h3>
+      <p>Enregistrer un temps de jeu.</p>
+    </div>
+
+    <div class="card" [routerLink]="['/history']">
       <div class="icon">📜</div>
       <h3>Mon Historique</h3>
-      <p>Consulter mes sessions de jeu (Bientôt).</p>
+      <p>Voir mes stats (Bientôt).</p>
     </div>
 
     <div class="card logout-card" (click)="logout()">
       <div class="icon">🚪</div>
       <h3>Déconnexion</h3>
-      <p>Se déconnecter de l'application.</p>
+      <p>Se déconnecter.</p>
     </div>
   </div>
 </div>

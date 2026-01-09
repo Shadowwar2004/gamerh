@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Enregistrer une session</h2>
+
+  @if (successMessage) { <div class="alert-success">{{ successMessage }}</div> }
+  @if (errorMessage) { <div class="alert-error">{{ errorMessage }}</div> }
+
+  <form (ngSubmit)="onSubmit()">
+    <label>Support :</label>
+    <select [(ngModel)]="selectedSupportId" name="support" (change)="onSupportChange()" required>
+      <option [value]="0">-- Choisir --</option>
+      @for (s of supports; track s.id) { <option [value]="s.id">{{ s.nom }}</option> }
+    </select>
+
+    <label>Jeu :</label>
+    <select [(ngModel)]="session.gameId" name="game" required [disabled]="games.length === 0">
+      <option [value]="0">-- D'abord choisir un support --</option>
+      @for (g of games; track g.id) { <option [value]="g.id">{{ g.nom }}</option> }
+    </select>
+
+    <label>Temps joué (minutes) :</label>
+    <input type="number" [(ngModel)]="session.temps" name="temps" min="0" required>
+
+    <label>Date :</label>
+    <input type="date" [(ngModel)]="session.dateRecord" name="date" required>
+
+    <button type="submit" [disabled]="session.gameId === 0">Enregistrer</button>
+  </form>
+</div>

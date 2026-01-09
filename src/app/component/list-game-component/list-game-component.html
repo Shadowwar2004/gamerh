@@ -1,0 +1,35 @@
+
+<div class="container">
+  <h2>Consulter les jeux vidéo</h2>
+
+  <div class="filter-section">
+    <label for="supportSelect">Sélectionnez un support :</label>
+    <select id="supportSelect" [(ngModel)]="selectedSupportId" (change)="onSupportChange()">
+      <option [value]="0" disabled>-- Choisir un support --</option>
+      @for (s of supports; track s.id) {
+        <option [value]="s.id">{{ s.nom }}</option>
+      }
+    </select>
+  </div>
+
+  @if (isLoading) {
+    <p class="loading">Chargement des jeux...</p>
+  }
+
+  <div class="games-grid">
+    @for (game of games; track game.id) {
+      <div class="game-card">
+        <h3>{{ game.nom }}</h3>
+        <div class="game-info">
+          <span>⏳ {{ game.tempsEstimer }} min</span>
+          <span class="badge">{{ game.supportNom }}</span>
+        </div>
+      </div>
+    }
+    @empty {
+      @if (hasSearched && !isLoading) {
+        <p class="no-results">Aucun jeu trouvé sur ce support.</p>
+      }
+    }
+  </div>
+</div>

@@ -29,8 +29,9 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
-        next: () => {
-          this.router.navigate(['/']);
+        next: (response: any) => {
+          localStorage.setItem('userId', response.userId); // On stocke l'ID
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           console.error(err);

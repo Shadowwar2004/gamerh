@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Mon Historique de Jeu</h2>
+
+  <table class="history-table">
+    <thead>
+    <tr>
+      <th>Jeu</th>
+      <th>Date</th>
+      <th>Temps (min)</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (session of sessions; track $index) {
+        <tr>
+          @if (editingSessionId !== session.id) {
+
+            <td>{{ session?.gameNom || 'Jeu inconnu' }}</td>
+
+            <td>{{ session?.dateRecord | date:'dd/MM/yyyy' }}</td>
+
+            <td>{{ session?.temps }}</td>
+
+            <td>
+              @if (isNearCompletion(session)) {
+                <span class="badge-complete">🔥 Presque fini</span>
+              } @else {
+                <span class="badge-normal">En cours</span>
+              }
+            </td>
+
+            <td>
+              <button class="btn-edit" (click)="startEdit(session)">✏️</button>
+              <button class="btn-delete" (click)="delete(session.id)">🗑️</button>
+            </td>
+          }
+          @else {
+            <td>{{ session.gameNom }}</td>
+            <td><input type="date" [(ngModel)]="editForm.dateRecord"></td>
+            <td><input type="number" [(ngModel)]="editForm.temps"></td>
+            <td>-</td>
+            <td>
+              <button class="btn-save" (click)="saveEdit()">💾</button>
+              <button class="btn-cancel" (click)="cancelEdit()">❌</button>
+            </td>
+          }
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" style="text-align:center">
+            Aucune session affichée.<br>
+            <small>(Vérifiez la console F12 si vous pensez que c'est une erreur)</small>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px; color: gray; font-size: 0.8rem; text-align: center;">
+    Sessions chargées : {{ sessions.length }} | User ID : {{ userId }}
+  </div>
+</div>

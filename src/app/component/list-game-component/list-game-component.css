@@ -1,0 +1,86 @@
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #a080ff;
+  margin-bottom: 30px;
+}
+
+/* Zone de filtre */
+.filter-section {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+select {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #3b3b3b;
+  color: white;
+  border: 1px solid #555;
+  min-width: 200px;
+  font-size: 1rem;
+}
+
+/* Grille des jeux */
+.games-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.game-card {
+  background-color: #2c2c2c; /* Carte grise */
+  border-left: 5px solid #a080ff; /* Bordure violette */
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  background-color: #353535;
+}
+
+.game-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.badge {
+  background-color: #444;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.no-results, .loading {
+  text-align: center;
+  width: 100%;
+  color: #aaa;
+  font-style: italic;
+  margin-top: 20px;
+}
