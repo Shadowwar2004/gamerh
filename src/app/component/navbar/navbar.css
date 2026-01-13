@@ -1,0 +1,58 @@
+/* src/app/component/navbar/navbar.component.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f; /* Plus foncé que le fond de page */
+  padding: 15px 30px;
+  border-bottom: 2px solid #3b3b3b;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #a080ff; /* Votre violet habituel */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Espace entre les liens */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ccc;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* Le lien de la page active */
+.nav-links a.active {
+  color: #a080ff;
+  border-bottom: 2px solid #a080ff;
+  padding-bottom: 5px;
+}
+
+.btn-logout {
+  background-color: #d9534f; /* Rouge délavé */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #c9302c;
+}

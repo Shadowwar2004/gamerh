@@ -1,0 +1,15 @@
+@if (showNavbar) {
+  <nav class="navbar">
+    <div class="logo">🎮 GamerH</div>
+
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active">Accueil</a></li>
+      <li><a routerLink="/games" routerLinkActive="active">Jeux</a></li>
+      <li><a routerLink="/create-game" routerLinkActive="active">Nouveau Jeu</a></li>
+      <li><a routerLink="/create-session" routerLinkActive="active">Nouvelle Session</a></li>
+      <li><a routerLink="/history" routerLinkActive="active">Historique</a></li>
+    </ul>
+
+    <button class="btn-logout" (click)="logout()">Déconnexion</button>
+  </nav>
+}
