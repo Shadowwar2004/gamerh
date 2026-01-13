@@ -12,15 +12,14 @@
     </tr>
     </thead>
     <tbody>
-      @for (session of sessions; track $index) {
+      @for (session of sessions; track session.id) {
         <tr>
           @if (editingSessionId !== session.id) {
+            <td>{{ session.gameNom || 'Jeu inconnu' }}</td>
 
-            <td>{{ session?.gameNom || 'Jeu inconnu' }}</td>
+            <td>{{ session.dateRecord | date:'dd/MM/yyyy' }}</td>
 
-            <td>{{ session?.dateRecord | date:'dd/MM/yyyy' }}</td>
-
-            <td>{{ session?.temps }}</td>
+            <td>{{ session.temps }}</td>
 
             <td>
               @if (isNearCompletion(session)) {
@@ -35,6 +34,7 @@
               <button class="btn-delete" (click)="delete(session.id)">🗑️</button>
             </td>
           }
+
           @else {
             <td>{{ session.gameNom }}</td>
             <td><input type="date" [(ngModel)]="editForm.dateRecord"></td>
@@ -46,11 +46,12 @@
             </td>
           }
         </tr>
-      } @empty {
+      }
+
+      @empty {
         <tr>
           <td colspan="5" style="text-align:center">
-            Aucune session affichée.<br>
-            <small>(Vérifiez la console F12 si vous pensez que c'est une erreur)</small>
+            Aucune session affichée.
           </td>
         </tr>
       }
