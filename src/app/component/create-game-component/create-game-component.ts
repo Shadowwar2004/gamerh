@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {GameService} from '../../service/game-service';
-import {Router} from '@angular/router';
-import {SupportReadDto} from '../../DTOS/SupportDto';
-import {GameCreateDto} from '../../DTOS/GameDto';
-import {FormsModule} from '@angular/forms';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { GameService } from '../../service/game-service';
+import { Router } from '@angular/router';
+import { SupportReadDto } from '../../DTOS/SupportDto';
+import { GameCreateDto } from '../../DTOS/GameDto';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-game-component',
-  imports: [
-    FormsModule
-  ],
+  imports: [ FormsModule ],
   templateUrl: './create-game-component.html',
   styleUrl: './create-game-component.css',
 })
@@ -25,7 +23,11 @@ export class CreateGameComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor(private gameService: GameService, private router: Router) {}
+  constructor(
+    private gameService: GameService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.gameService.getSupports().subscribe({
@@ -34,6 +36,7 @@ export class CreateGameComponent implements OnInit {
         if (this.supports.length > 0) {
           this.game.supportId = this.supports[0].id;
         }
+        this.cdr.detectChanges();
       },
       error: (err) => console.error('Erreur chargement supports', err)
     });
@@ -53,6 +56,7 @@ export class CreateGameComponent implements OnInit {
         this.successMessage = "Jeu créé avec succès !";
         this.game.nom = '';
         this.game.tempsEstimer = 0;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         if (err.status === 409) {
@@ -60,6 +64,7 @@ export class CreateGameComponent implements OnInit {
         } else {
           this.errorMessage = "Une erreur est survenue lors de la création.";
         }
+        this.cdr.detectChanges();
       }
     });
   }

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {GameService} from '../../service/game-service';
-import {SupportReadDto} from '../../DTOS/SupportDto';
-import {GameReadDto} from '../../DTOS/GameDto';
-import {FormsModule} from '@angular/forms';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { GameService } from '../../service/game-service';
+import { SupportReadDto } from '../../DTOS/SupportDto';
+import { GameReadDto } from '../../DTOS/GameDto';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-list-game-component',
@@ -19,20 +19,21 @@ export class ListGameComponent implements OnInit {
 
   selectedSupportId: number = 0;
   isLoading: boolean = false;
-  hasSearched: boolean = false; // Pour savoir si on doit afficher "Aucun jeu trouvé"
+  hasSearched: boolean = false;
 
-  constructor(private gameService: GameService) {}
+  // 2. INJECTION du ChangeDetectorRef
+  constructor(
+    private gameService: GameService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    // 1. Charger la liste des supports pour le menu déroulant
+    // 1. Charger la liste des supports
     this.gameService.getSupports().subscribe({
       next: (data) => {
         this.supports = data;
-        // Optionnel : Sélectionner automatiquement le premier et charger ses jeux
-        /* if (this.supports.length > 0) {
-           this.selectedSupportId = this.supports[0].id;
-           this.onSupportChange();
-        } */
+        // 3. FORCER L'AFFICHAGE DU MENU DÉROULANT
+        this.cdr.detectChanges();
       },
       error: (err) => console.error('Erreur chargement supports', err)
     });
@@ -44,16 +45,21 @@ export class ListGameComponent implements OnInit {
 
     this.isLoading = true;
     this.hasSearched = true;
-    this.games = []; // Vide la liste précédente
+    this.games = [];
+
+    this.cdr.detectChanges();
 
     this.gameService.getGamesBySupport(this.selectedSupportId).subscribe({
       next: (data) => {
         this.games = data;
         this.isLoading = false;
+        // 4. FORCER L'AFFICHAGE DES JEUX
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Erreur chargement jeux', err);
         this.isLoading = false;
+        this.cdr.detectChanges();
       }
     });
   }
