@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Ajouter un nouveau jeu</h2>
-
+  <button routerLink="/home" class="btn-back">⬅️ Retour Accueil</button>
   @if (successMessage) {
     <div style="color: green; margin-bottom: 10px;">
       {{ successMessage }}
@@ -37,5 +37,6 @@
     </div>
 
     <button type="submit">Créer le jeu</button>
+
   </form>
 </div>

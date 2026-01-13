@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { GameService } from '../../service/game-service';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { SupportReadDto } from '../../DTOS/SupportDto';
 import { GameCreateDto } from '../../DTOS/GameDto';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-game-component',
-  imports: [ FormsModule ],
+  imports: [ FormsModule,RouterLink ],
   templateUrl: './create-game-component.html',
   styleUrl: './create-game-component.css',
 })

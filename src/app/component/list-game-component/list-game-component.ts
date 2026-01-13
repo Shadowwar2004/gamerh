@@ -3,11 +3,13 @@ import { GameService } from '../../service/game-service';
 import { SupportReadDto } from '../../DTOS/SupportDto';
 import { GameReadDto } from '../../DTOS/GameDto';
 import { FormsModule } from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-list-game-component',
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './list-game-component.html',
   styleUrl: './list-game-component.css',

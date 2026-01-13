@@ -3,13 +3,15 @@ import { SessionCreateDto, SessionReadDto } from '../../DTOS/SessionDto';
 import { SessionService } from '../../service/session-service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-history-component',
   standalone: true,
   imports: [
     DatePipe,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './history-component.html',
   styleUrl: './history-component.css',

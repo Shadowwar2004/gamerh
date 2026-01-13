@@ -5,10 +5,12 @@ import { SessionCreateDto } from '../../DTOS/SessionDto';
 import { GameReadDto } from '../../DTOS/GameDto';
 import { SupportReadDto } from '../../DTOS/SupportDto';
 import { FormsModule } from '@angular/forms';
+import {RouterLink} from '@angular/router';
+
 
 @Component({
   selector: 'app-create-session-component',
-  imports: [ FormsModule ],
+  imports: [ FormsModule,RouterLink ],
   templateUrl: './create-session-component.html',
   styleUrl: './create-session-component.css',
 })
