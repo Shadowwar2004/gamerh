@@ -1,62 +1,85 @@
 .login-container {
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
+  margin: 80px auto; /* Un peu plus d'espace en haut */
+  padding: 30px;
+  background-color: #2c2c2c; /* Fond de la carte sombre */
+  border: 1px solid #444;    /* Bordure discrète */
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Ombre plus marquée */
   font-family: sans-serif;
+  color: #fff; /* Texte blanc par défaut */
 }
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #a080ff; /* Titre en Violet (comme le logo) */
+  margin-bottom: 30px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
+  color: #ccc; /* Label gris clair */
 }
 
 input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
+  padding: 12px;
+  background-color: #3b3b3b; /* Champ de saisie sombre */
+  border: 1px solid #555;
   border-radius: 4px;
-  box-sizing: border-box; /* Important pour que le padding ne dépasse pas */
+  box-sizing: border-box;
+  color: white; /* Texte saisi en blanc */
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #a080ff; /* Bordure violette quand on écrit */
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+  padding: 12px;
+  background-color: #a080ff; /* Bouton Violet */
+  color: white; /* Texte noir ou blanc selon votre goût (blanc ici) */
+  font-weight: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #8e6cd6; /* Violet un peu plus foncé au survol */
 }
 
 button:disabled {
-  background-color: #cccccc;
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
 }
 
 .error {
-  color: red;
-  font-size: 12px;
+  color: #ff6b6b; /* Rouge clair pour être lisible sur fond noir */
+  font-size: 13px;
   margin-top: 5px;
 }
 
 .alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #4a1818; /* Fond rouge très sombre */
+  color: #ff9999; /* Texte rouge clair */
+  border: 1px solid #7c2626;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border-radius: 4px;
   text-align: center;
 }
